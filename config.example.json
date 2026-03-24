@@ -1,0 +1,90 @@
+{
+  "agents": {
+    "defaults": {
+      "model": "YOUR_MODEL_NAME",
+      "provider": "ollama",
+      "memoryWindow": 20,
+      "system_prompt": "You are a helpful voice assistant. Keep answers short and clear — responses are read aloud. No markdown, no emoji."
+    }
+  },
+  "channels": {
+    "telegram": {
+      "enabled": false,
+      "token": "YOUR_TELEGRAM_BOT_TOKEN",
+      "allow_from": [
+        "YOUR_TELEGRAM_USER_ID"
+      ],
+      "transcription_model": "Systran/faster-whisper-large-v3",
+      "transcription_api_base": "http://YOUR_STT_SERVER_IP:8000/v1/audio/transcriptions"
+    },
+    "voice_server": {
+      "enabled": true,
+      "port": 18790,
+      "host": "0.0.0.0",
+      "local_ip": "YOUR_SERVER_IP",
+      "mic_gain": 6.0,
+      "token": "YOUR_TOKEN_HERE",
+      "transcription_api_base": "http://YOUR_STT_SERVER_IP:8000/v1/audio/transcriptions",
+      "transcription_model": "Systran/faster-whisper-large-v3",
+      "rms_threshold": 30.0,
+      "allowFrom": [
+        "*"
+      ]
+    }
+  },
+  "providers": {
+    "gemini": {
+      "apiKey": "YOUR_GEMINI_API_KEY"
+    },
+    "ollama": {
+      "apiBase": "http://YOUR_OLLAMA_SERVER_IP:11434",
+      "apiKey": "ollama"
+    },
+    "openrouter": {
+      "apiKey": "YOUR_OPENROUTER_API_KEY"
+    }
+  },
+  "gateway": {
+    "host": "0.0.0.0",
+    "port": 18790
+  },
+  "tools": {
+    "tts": {
+      "enabled": true,
+      "active_preset": "irina",
+      "presets": {
+        "dmitry": {
+          "provider": "edge",
+          "voice": "ru-RU-DmitryNeural"
+        },
+        "irina": {
+          "provider": "openai",
+          "api_base": "http://YOUR_TTS_SERVER_IP:8000/v1",
+          "model": "speaches-ai/piper-ru_RU-irina-medium",
+          "voice": "irina"
+        },
+        "svetlana": {
+          "provider": "edge",
+          "voice": "ru-RU-SvetlanaNeural"
+        }
+      },
+      "reply_to_voice": true,
+      "always_speak": false
+    },
+    "restrictToWorkspace": false,
+    "mcpServers": {
+      "homeAssistant": {
+        "type": "streamableHttp",
+        "url": "http://YOUR_HOME_ASSISTANT_IP:8123/api/mcp",
+        "headers": {
+          "Authorization": "Bearer YOUR_HA_LONG_LIVED_TOKEN"
+        }
+      }
+    }
+  },
+  "stt": {
+    "provider": "speaches",
+    "apiBase": "http://YOUR_STT_SERVER_IP:8000/v1",
+    "model": "Systran/faster-whisper-large-v3"
+  }
+}

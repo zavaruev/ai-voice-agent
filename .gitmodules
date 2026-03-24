@@ -1,0 +1,11 @@
+[submodule "xiaozhi-esp32"]
+	path = xiaozhi-esp32
+	url = https://github.com/78/xiaozhi-esp32
+
+[submodule "nanobot"]
+	path = nanobot
+	url = https://github.com/HKUDS/nanobot.git
+
+[submodule "speaches"]
+	path = speaches
+	url = https://github.com/speaches-ai/speaches
